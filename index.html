@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>元件圖鑑 — 滑鼠移過去，就知道那個東西叫什麼</title>
+<meta name="description" content="把滑鼠移到示範網站的任何地方，立刻看到那個元件的中文名、英文名，以及可以直接貼給 AI 的描述句。給不寫程式但要跟 AI 溝通介面的人。">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="元件圖鑑 UI Element Field Guide">
+<meta property="og:description" content="滑鼠移到哪，就告訴你那個介面元件叫什麼——中文、英文、以及可以直接貼給 AI 的說法。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23131A2B'/%3E%3Crect x='7' y='7' width='18' height='18' rx='2' fill='none' stroke='%23F5127A' stroke-width='2' stroke-dasharray='4 3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23F5127A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-mode="inspect">
+
+<!-- ============ 圖鑑的頁首 ============ -->
+<header class="gd-bar">
+  <div class="wrap gd-bar__in">
+    <a class="gd-brand" href="#top">元件圖鑑 <small>Field Guide</small></a>
+    <span class="gd-bar__sp"></span>
+    <div class="gd-modes" role="group" aria-label="操作模式">
+      <button class="gd-mode" id="mode-inspect" aria-pressed="true">探索模式</button>
+      <button class="gd-mode" id="mode-use" aria-pressed="false">體驗模式</button>
+    </div>
+    <button class="gd-icon-btn" id="theme-btn" aria-label="切換深色或淺色主題" title="切換深色或淺色主題">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ Hero ============ -->
+  <section class="hero wrap">
+    <p class="hero__eyebrow">UI Element Field Guide · 給不寫程式的你</p>
+    <h1>講不出名字的東西，<em>AI 只能用猜的。</em></h1>
+    <p class="hero__lead">下面是一個真的網站。把滑鼠移到任何一個地方，它會告訴你那塊叫什麼——中文名、英文名，還有一句可以直接貼給 AI 的描述。手機請用點的。</p>
+    <p class="hero__hint">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 7.5-6.2 1.8L9.6 19z"/></svg>
+      從那顆綠色按鈕開始試
+    </p>
+  </section>
+
+  <!-- ============ 展示台：示範網站 ============ -->
+  <section class="stage wrap" aria-label="示範網站">
+    <div class="stage__frame">
+      <div class="stage__chrome">
+        <span class="stage__dots"><i></i><i></i><i></i></span>
+        <span class="stage__url">shunfeng-charter.example.com/booking</span>
+        <span class="stage__badge" id="stage-badge">Inspect on</span>
+      </div>
+      <div class="stage__scroll" id="stage-scroll">
+      <div class="demo" id="demo">
+
+        <!-- 通知橫幅 -->
+        <div class="d-alert" data-el="alert">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+          10/12 前預約春季船班，每人折 200 元。
+          <button class="d-alert__x" aria-label="關閉公告">✕</button>
+        </div>
+
+        <!-- 頁首 -->
+        <header class="d-head" data-el="header">
+          <div class="d-wrap d-head__in" data-el="container">
+            <a href="#" class="d-logo" data-el="logo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" data-el="icon"><path d="M3 15l9-11 9 11"/><path d="M4 15c2.5 3 5 4.5 8 4.5s5.5-1.5 8-4.5"/></svg>
+              順風號
+            </a>
+            <nav class="d-nav" data-el="nav">
+              <a href="#" class="is-current" data-el="nav-link">船班</a>
+              <a href="#">裝備租借</a>
+              <span class="d-dd" data-el="dropdown">
+                <a href="#">釣點介紹 ▾</a>
+                <span class="d-dd__menu">
+                  <a href="#">象鼻岩外海</a>
+                  <a href="#">龜山島北岸</a>
+                  <a href="#">深澳灣</a>
+                </span>
+              </span>
+              <a href="#">出團通知 <span class="d-badge" data-el="badge">3</span></a>
+            </nav>
+            <span class="d-spacer"></span>
+            <button class="d-iconbtn" aria-label="搜尋" data-el="icon-button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            </button>
+            <button class="d-btn d-btn--primary" data-el="button-primary">立即訂位</button>
+            <button class="d-burger" aria-label="開啟選單" data-el="hamburger">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- 主視覺區 -->
+        <section class="d-hero" data-el="hero">
+          <div class="d-wrap">
+            <p class="d-eyebrow" data-el="eyebrow">東北角 · 海釣船</p>
+            <h1 data-el="heading">出海這件事，我們幫你安排到只剩帶人來。</h1>
+            <p data-el="paragraph">船長在這片海域跑了 22 年。從釣點、餌料到暈船藥，上船前該準備的都準備好了，你只要決定哪一天出發。</p>
+            <div class="d-hero__cta">
+              <button class="d-btn d-btn--primary">查看本月船班</button>
+              <button class="d-btn d-btn--secondary" data-el="button-secondary">先看看常見問題</button>
+            </div>
+            <div class="d-stats">
+              <div class="d-stat" data-el="stat"><b>22</b><span>年在地經驗</span></div>
+              <div class="d-stat"><b>4,180</b><span>趟安全返港</span></div>
+              <div class="d-stat"><b>4.9</b><span>乘客評分</span></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="d-wrap">
+          <!-- 麵包屑 -->
+          <nav class="d-crumb" data-el="breadcrumb">
+            <a href="#" data-el="link">首頁</a> › <a href="#">船班</a> › <span>2026 春季</span>
+          </nav>
+
+          <!-- 分頁標籤 -->
+          <div class="d-tabs" role="tablist" data-el="tabs">
+            <button class="d-tab" role="tab" aria-selected="true">全部船班</button>
+            <button class="d-tab" role="tab" aria-selected="false">半日</button>
+            <button class="d-tab" role="tab" aria-selected="false">全日</button>
+            <button class="d-tab" role="tab" aria-selected="false">夜釣</button>
+          </div>
+
+          <div class="d-cols">
+            <div>
+              <!-- 網格 + 卡片 -->
+              <div class="d-grid" data-el="grid">
+                <article class="d-card" data-el="card">
+                  <img class="d-card__img" data-el="thumbnail" alt="清晨的深澳灣海面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%230E5F58'/%3E%3Ccircle cx='120' cy='30' r='13' fill='%23F2C14E'/%3E%3Cpath d='M0 62q20-8 40 0t40 0 40 0 40 0v38H0z' fill='%230A4A44'/%3E%3Cpath d='M0 76q20-8 40 0t40 0 40 0 40 0v24H0z' fill='%23083A35'/%3E%3C/svg%3E">
+                  <div class="d-card__body">
+                    <h3>深澳灣 半日船</h3>
+                    <p>05:30 出發，回程約 11:00。適合第一次上船的人。</p>
+                    <div class="d-tags"><span class="d-tag" data-el="tag">新手友善</span><span class="d-tag">含餌料</span></div>
+                    <p class="d-price">NT$1,800 / 人</p>
+                  </div>
+                </article>
+                <article class="d-card">
+                  <img class="d-card__img" alt="龜山島外海的浪" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%23134E63'/%3E%3Cpath d='M22 58l24-26 22 26z' fill='%230C3B4C'/%3E%3Cpath d='M0 60q20-9 40 0t40 0 40 0 40 0v40H0z' fill='%230C3B4C'/%3E%3Cpath d='M0 76q20-9 40 0t40 0 40 0 40 0v24H0z' fill='%23092C39'/%3E%3C/svg%3E">
+                  <div class="d-card__body">
+                    <h3>龜山島 全日船</h3>
+                    <p>整天在外海，主攻白帶魚與紅甘。</p>
+                    <div class="d-tags"><span class="d-tag">進階</span><span class="d-tag">附午餐</span></div>
+                    <p class="d-price">NT$3,200 / 人</p>
+                  </div>
+                </article>
+                <article class="d-card">
+                  <img class="d-card__img" alt="夜釣時的甲板燈" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%231B2540'/%3E%3Ccircle cx='40' cy='26' r='9' fill='%23F5F0D8'/%3E%3Cpath d='M0 64q20-7 40 0t40 0 40 0 40 0v36H0z' fill='%23131B32'/%3E%3Cpath d='M0 80q20-7 40 0t40 0 40 0 40 0v20H0z' fill='%230D1426'/%3E%3C/svg%3E">
+                  <div class="d-card__body">
+                    <h3>象鼻岩 夜釣船</h3>
+                    <p>18:00 出發，燈火下釣透抽，回程 23:30。</p>
+                    <div class="d-tags"><span class="d-tag">熱門</span><span class="d-tag">含照明</span></div>
+                    <p class="d-price">NT$2,400 / 人</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- 側邊欄 -->
+            <aside class="d-side" data-el="sidebar">
+              <h4>快速篩選</h4>
+              <div class="d-search" data-el="search">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <input type="search" placeholder="搜尋船班或釣點">
+              </div>
+              <ul class="d-list" data-el="list">
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>船資含釣具與餌料</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>不暈船保證：可改期一次</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>現場停車位免費</li>
+              </ul>
+              <div class="d-people">
+                <span class="d-avatar" data-el="avatar">陳</span>
+                <p>「船長會直接告訴你魚在哪一層。」<br>— 陳先生，10 月出海</p>
+              </div>
+              <div class="d-progress" data-el="progress">
+                <div class="d-progress__bar"><i></i></div>
+                <span>本月船位已訂出 72%</span>
+              </div>
+              <div class="d-loading">
+                <span class="d-spinner" data-el="spinner"></span> 正在更新海況…
+              </div>
+            </aside>
+          </div>
+
+          <hr class="d-hr" data-el="divider">
+
+          <!-- 表格 -->
+          <section class="d-table-sec">
+            <h2>近期出船紀錄</h2>
+            <div class="d-tablewrap">
+              <table data-el="table">
+                <thead><tr><th>日期</th><th>船班</th><th>釣況</th><th>狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>09/02</td><td>深澳灣 半日</td><td>白帶魚 · 佳</td><td><span class="d-pill">已完成</span></td></tr>
+                  <tr><td>09/04</td><td>象鼻岩 夜釣</td><td>透抽 · 普通</td><td><span class="d-pill">已完成</span></td></tr>
+                  <tr><td>09/07</td><td>龜山島 全日</td><td>紅甘 · 佳</td><td><span class="d-pill">已完成</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="d-pager" data-el="pagination">
+              <button aria-label="上一頁">‹</button>
+              <button aria-current="page">1</button><button>2</button><button>3</button>
+              <button aria-label="下一頁">›</button>
+            </div>
+          </section>
+
+          <!-- 常見問題 -->
+          <section class="d-faq">
+            <h2>常見問題</h2>
+            <details data-el="accordion" open>
+              <summary>沒釣過魚也可以上船嗎？</summary>
+              <p>可以。半日船有一半以上是第一次出海的客人，船長會從綁線開始帶。</p>
+            </details>
+            <details>
+              <summary>遇到風浪取消怎麼辦？</summary>
+              <p>出發前一天 18:00 由船長判斷，取消全額退款，或免費改期到三個月內任一船班。</p>
+            </details>
+            <details>
+              <summary>可以帶自己的釣竿嗎？</summary>
+              <p>可以，船上也備有免費租借的竿組，不需要另外付費。</p>
+            </details>
+          </section>
+        </div>
+
+        <!-- 表單 -->
+        <section class="d-formsec">
+          <div class="d-wrap">
+            <h2>預約出海</h2>
+            <form data-el="form" novalidate>
+              <div class="d-field">
+                <label class="d-label" for="f-name" data-el="label">姓名 <i>*</i></label>
+                <input class="d-input" id="f-name" type="text" placeholder="王小明" data-el="text-input">
+              </div>
+              <div class="d-field">
+                <label class="d-label" for="f-phone">聯絡電話 <i>*</i></label>
+                <input class="d-input" id="f-phone" type="tel" placeholder="09xx-xxx-xxx">
+                <p class="d-help" data-el="helper-text">只會用來確認船班，不會做其他用途。</p>
+              </div>
+              <div class="d-field d-field--err">
+                <label class="d-label" for="f-mail">Email</label>
+                <input class="d-input" id="f-mail" type="email" value="wang@" >
+                <p class="d-err" data-el="error-text">Email 格式看起來不完整，請確認是否少了網域。</p>
+              </div>
+              <div class="d-field">
+                <label class="d-label" for="f-trip">想參加的船班</label>
+                <select class="d-select" id="f-trip" data-el="select">
+                  <option>請選擇</option>
+                  <option>深澳灣 半日船</option>
+                  <option>龜山島 全日船</option>
+                  <option>象鼻岩 夜釣船</option>
+                </select>
+              </div>
+              <div class="d-field">
+                <span class="d-label">加購項目</span>
+                <div class="d-row">
+                  <label class="d-check" data-el="checkbox"><input type="checkbox" checked>租借釣竿</label>
+                  <label class="d-check"><input type="checkbox">代訂便當</label>
+                  <label class="d-check"><input type="checkbox">暈船藥</label>
+                </div>
+              </div>
+              <div class="d-field">
+                <span class="d-label">付款方式</span>
+                <div class="d-row">
+                  <label class="d-check" data-el="radio"><input type="radio" name="pay" checked>現場付現</label>
+                  <label class="d-check"><input type="radio" name="pay">匯款訂金</label>
+                </div>
+              </div>
+              <div class="d-field">
+                <label class="d-label" for="f-note">備註</label>
+                <textarea class="d-textarea" id="f-note" placeholder="例如：同行有兩位長輩，需要靠近船艙的位子" data-el="textarea"></textarea>
+              </div>
+              <div class="d-field">
+                <label class="d-label" for="f-size">同行人數：<span class="d-rangeval" id="f-size-val">4 人</span></label>
+                <input class="d-range" id="f-size" type="range" min="1" max="12" value="4" data-el="slider">
+              </div>
+              <div class="d-row" style="align-items:center;justify-content:space-between">
+                <span class="d-switch is-on" data-el="toggle" role="switch" aria-checked="true" tabindex="0">
+                  <span class="d-switch__track"></span> 接收出船通知
+                </span>
+                <span class="d-tip" data-el="tooltip">
+                  <span class="d-tip__bubble">可免費改期一次</span>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 113.5 2.3V14"/><path d="M12 17v.5"/></svg>
+                </span>
+              </div>
+              <div class="d-row">
+                <button type="button" class="d-btn d-btn--primary" id="demo-submit">送出預約</button>
+                <button type="button" class="d-btn d-btn--secondary" id="demo-cancel">取消訂位</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 頁尾 -->
+        <footer class="d-foot" data-el="footer">
+          <div class="d-wrap">
+            <div class="d-foot__cols">
+              <div>
+                <h5>順風號</h5>
+                <p style="font-size:13.5px;margin:0;max-width:32ch">新北市瑞芳區深澳漁港 3 號碼頭<br>每日 05:00–23:00</p>
+              </div>
+              <div>
+                <h5>船班</h5>
+                <a href="#" data-el="link">半日船</a><a href="#">全日船</a><a href="#">夜釣船</a>
+              </div>
+              <div>
+                <h5>須知</h5>
+                <a href="#">退款規定</a><a href="#">保險說明</a><a href="#">聯絡我們</a>
+              </div>
+            </div>
+            <div class="d-foot__base">© 2026 順風號海釣船 · 這是示範用網站，不是真的商家</div>
+          </div>
+        </footer>
+
+        <!-- 彈出視窗 -->
+        <div class="d-modal" id="demo-modal">
+          <div class="d-modal__overlay" data-el="overlay"></div>
+          <div class="d-modal__box" data-el="modal" role="dialog" aria-modal="true" aria-labelledby="modal-t">
+            <h3 id="modal-t">確定要取消這次訂位？</h3>
+            <p>取消後船位會立刻釋出，同一天的船班不一定還有位子。</p>
+            <div class="d-modal__act">
+              <button class="d-btn d-btn--secondary" id="modal-close">再想一下</button>
+              <button class="d-btn d-btn--primary" id="modal-ok">確定取消</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 浮動通知 -->
+        <div class="d-toast" id="demo-toast" data-el="toast">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>
+          已收到預約，船長會在一小時內回覆。
+        </div>
+
+      </div><!-- /.demo -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 圖鑑目錄 ============ -->
+  <section class="index wrap" id="catalog">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">Catalog · 52 個元件</p>
+      <h2>整本圖鑑</h2>
+      <p>用中文或英文都能搜。點任何一張卡片，上面的示範網站會捲到那個元件並標起來。</p>
+    </div>
+    <div class="tools">
+      <div class="tools__search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="cat-search" placeholder="搜尋：按鈕、打勾框、dropdown、placeholder…" aria-label="搜尋元件">
+      </div>
+      <div class="filters" id="cat-filters" role="group" aria-label="依類別篩選"></div>
+    </div>
+    <div class="cards" id="cat-cards"></div>
+    <p class="empty" id="cat-empty" hidden>找不到符合的元件。換個說法試試，例如「灰色的字」或「popup」。</p>
+  </section>
+
+  <!-- ============ 句型 ============ -->
+  <section class="recipe wrap">
+    <div class="sec-head">
+      <p class="sec-head__eyebrow">How to ask</p>
+      <h2>一句話講清楚要改哪裡</h2>
+      <p>知道名字之後，把它放進這個句型，AI 幾乎不會改錯地方。</p>
+    </div>
+    <div class="recipe__formula">
+      <span class="recipe__slot">在哪裡</span><span class="recipe__plus">+</span>
+      <span class="recipe__slot">哪個元件</span><span class="recipe__plus">+</span>
+      <span class="recipe__slot">要它變成怎樣</span>
+    </div>
+    <div class="compare">
+      <div class="compare__item compare__item--bad">
+        <h4>AI 只能猜</h4>
+        <p>「上面那個東西怪怪的，幫我調一下。」</p>
+        <p>「那個框框太小了。」</p>
+        <p>「按鈕不好看，改一下。」</p>
+      </div>
+      <div class="compare__item compare__item--good">
+        <h4>AI 一次就改對</h4>
+        <p><b>頁首（header）</b>裡的<b>導覽列（navbar）</b>，連結之間的間距太擠，改成 24px。</p>
+        <p>預約表單裡<b>姓名的單行輸入框（text input）</b>高度改成 48px，聚焦時外框變綠色。</p>
+        <p><b>主視覺區（hero）</b>的<b>主要按鈕（primary button）</b>文字改成「立即訂位」，圓角改成 8px。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gd-foot">
+  <div class="wrap gd-foot__in">
+    <span>元件圖鑑 · 一個給非工程背景的人用的介面詞彙表</span>
+    <span class="gd-bar__sp"></span>
+    <span>示範網站的內容為虛構，僅供教學使用</span>
+  </div>
+</footer>
+
+<!-- 標註層 -->
+<div class="insp" id="insp" hidden aria-hidden="true">
+  <svg class="insp__svg"><path class="insp__line" id="insp-line" d=""></path><circle class="insp__dot" id="insp-dot" r="3"></circle></svg>
+  <div class="insp__box" id="insp-box"><i></i><i></i><i></i><i></i><span class="insp__size" id="insp-size"></span></div>
+  <div class="insp__label" id="insp-label"><b></b><span></span><code></code></div>
+</div>
+
+<!-- 詳細面板 -->
+<aside class="dock" id="dock" aria-live="polite">
+  <div class="dock__head">
+    <div class="dock__title"><b id="dk-zh"></b><span id="dk-en"></span></div>
+    <button class="dock__x" id="dk-close" aria-label="關閉說明">✕</button>
+  </div>
+  <div class="dock__body">
+    <div class="dock__meta"><span class="dock__chip" id="dk-tag"></span><span class="dock__chip" id="dk-cat"></span></div>
+    <p class="dock__desc" id="dk-desc"></p>
+    <div class="dock__group"><span class="dock__h">位置</span><div class="dock__path" id="dk-path"></div></div>
+    <div class="dock__group"><span class="dock__h">中文怎麼說</span><div class="dock__kws" id="dk-zhkw"></div></div>
+    <div class="dock__group"><span class="dock__h">English</span><div class="dock__kws" id="dk-enkw"></div></div>
+    <div class="dock__group">
+      <span class="dock__h">直接貼給 AI</span>
+      <div class="dock__prompt" id="dk-prompt"></div>
+      <button class="dock__copy" id="dk-copy">複製這句話</button>
+    </div>
+    <p class="dock__aka" id="dk-aka"></p>
+  </div>
+</aside>
+
+<div class="copied" id="copied">已複製</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
