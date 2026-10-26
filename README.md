@@ -54,8 +54,6 @@ js/app.js       標註、引線、目錄、模式切換
 python3 -m http.server 4321
 ```
 
-然後開 http://localhost:4321
-
 ## 授權
 
 MIT
